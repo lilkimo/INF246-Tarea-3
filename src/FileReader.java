@@ -1,33 +1,30 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileReader {
-    String path;
-    List<String> lines = new ArrayList<String>();
+    private String path;
+    private List<String> lines = new ArrayList<String>();
 
-    public FileReader(String path){
+    public FileReader(String path) {
         this.path = path;
     }
     
-    public Reader(){
+    public void Reader() throws FileNotFoundException {
         File file = new File(this.path);
         Scanner scan = new Scanner(file);
-        String fileContent = "";
-        while(scan.hasNextLine()){
-            lines.add(scan.nextLine);
-        }
+        while (scan.hasNextLine())
+            lines.add(scan.nextLine());
+        scan.close();
     }
 
-    public void setpath(String path) {
-        this.nNodes = path;
-    }
-
-    public List<String> getlines(){
+    public List<String> getLines(){
         return lines;
     }
 
-    public String getpath(){
+    public String getPath(){
         return path;
     }
 }
