@@ -12,7 +12,7 @@ public class FileReader {
         this.path = path;
     }
     
-    public void Reader() throws FileNotFoundException {
+    public void Read() throws FileNotFoundException {
         File file = new File(this.path);
         Scanner scan = new Scanner(file);
         while (scan.hasNextLine())
