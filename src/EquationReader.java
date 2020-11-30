@@ -1,27 +1,26 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class FileReader {
+public class EquationReader {
     private String path;
-    private List<String> lines = new ArrayList<String>();
+    private String[] lines;
 
-    public FileReader(String path) {
+    public EquationReader(String path) {
         this.path = path;
     }
     
     public void Read() throws FileNotFoundException {
         File file = new File(this.path);
         Scanner scan = new Scanner(file);
-        while (scan.hasNextLine())
-            lines.add(scan.nextLine());
+        lines = new String[Integer.parseInt(scan.nextLine())];
+        for (int i = 0; i < lines.length; i++)
+            lines[i] = scan.nextLine();
         scan.close();
     }
 
-    public List<String> getLines(){
-        return lines;
+    public String[] getLines() {
+        return lines.clone();
     }
 
     public String getPath(){
