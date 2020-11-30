@@ -1,3 +1,8 @@
+
+import java.util.Random;
+
+
+
 public class Problema2 {
     static void printArray(Integer[] array) { 
         int n = array.length; 
@@ -17,7 +22,13 @@ public class Problema2 {
     }
 
     public static void main(String[] args) {
-        Integer[] set = {15, 2, 7, 20, 4, 3, 19, 45, 30, 100, 8, 1};
+        Random rd = new Random(); // creating Random object
+        Integer[] set = new Integer[10000];
+        Integer[] set2 = new Integer[10000];
+        for (int i = 0; i < set.length; i++) {
+            set[i] = rd.nextInt(); // storing random integers in an array
+            set2[i] = set[i];
+        }
         SortAlgorithm noThreads = new QuickSort();
         SortAlgorithm withThreads = new ThreadsQuickSort();
         long start;
@@ -30,14 +41,14 @@ public class Problema2 {
         else
             System.out.println("The array is not sorted");
 
-        set = new Integer[] {15, 2, 7, 20, 4, 3, 19, 45, 30, 100, 8, 1};
-        
         start = System.currentTimeMillis();
-        withThreads.Sort(set);
+        withThreads.Sort(set2);
         System.out.println("Threaded array sorted in "+(System.currentTimeMillis()-start)+" ms");
-        if (isSorted(set))
+        if (isSorted(set2))
             System.out.println("The array was successfully sorted");
         else
             System.out.println("The array is not sorted");
     }
 }
+// ZARKOOOOOOOOOOOOO ME FUI A TOMAR ONCE, LA WEA CON THREADS LO HACE MAS LENTO XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD,
+// LA PRUEBA ESTA CON WEAS DE TAMAÑO 10.000
