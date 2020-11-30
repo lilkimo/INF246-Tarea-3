@@ -20,14 +20,6 @@ class Main {
             System.out.println(matcher.group("equation"));
         }
         else
-            System.out.println("0 matches");
-        Matcher matcher1 = input.matcher("f(10)");
-        Boolean matchFound1 = matcher1.find();
-        if (matchFound1){
-            System.out.println(matcher1.group("name"));
-            System.out.println(matcher1.group("argument"));
-        }
-        else
             System.out.println("0 matches");*/
 
         //Read Text
@@ -57,7 +49,7 @@ class Main {
             System.exit(1);
         lector.close();
         
-
+        MyThread hebra = new MyThread(equations, 1);
         for (Integer i = 1; i < numEquations; i++){
             
         }
