@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,9 +22,17 @@ class Problema1 {
             }
         }
         for (Map.Entry<Character, Function> entry : functions.entrySet())
-            System.out.println(entry.getKey() + ": " + entry.getValue().toString());
-        /*
+        System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+        //Lee el input
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingrese operacion");
+        String function = lector.nextLine();
+        lector.close();
         
+        MyThread hebra = new MyThread(function, functions);
+        
+        
+        /*
         Boolean matchFound = matcher.find();
         if (matchFound) {
             System.out.println(matcher.group("name"));
