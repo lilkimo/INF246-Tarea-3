@@ -10,7 +10,6 @@ public class MyThread extends Thread {
         this.nHebra = nHebra;
     }
     public void run(){
-        System.out.println(funciones);
-        System.out.println(nHebra);
+        
     }
 }
