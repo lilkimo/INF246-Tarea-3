@@ -1,8 +1,6 @@
 
 import java.util.Random;
 
-
-
 public class Problema2 {
     static void printArray(Integer[] array) { 
         int n = array.length; 
@@ -35,7 +33,7 @@ public class Problema2 {
         
         start = System.currentTimeMillis();
         noThreads.Sort(set);
-        System.out.println("Single array sorted in "+(System.currentTimeMillis()-start)+" ms");
+        System.out.println("Single array sorted in " + (System.currentTimeMillis() - start) + " ms");
         if (isSorted(set))
             System.out.println("The array was successfully sorted");
         else
@@ -43,12 +41,10 @@ public class Problema2 {
 
         start = System.currentTimeMillis();
         withThreads.Sort(set2);
-        System.out.println("Threaded array sorted in "+(System.currentTimeMillis()-start)+" ms");
+        System.out.println("Threaded array sorted in " + (System.currentTimeMillis() - start) + " ms");
         if (isSorted(set2))
             System.out.println("The array was successfully sorted");
         else
             System.out.println("The array is not sorted");
     }
 }
-// ZARKOOOOOOOOOOOOO ME FUI A TOMAR ONCE, LA WEA CON THREADS LO HACE MAS LENTO XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD,
-// LA PRUEBA ESTA CON WEAS DE TAMAÑO 10.000
