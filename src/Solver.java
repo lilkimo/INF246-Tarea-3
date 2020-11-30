@@ -4,12 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class MyThread extends Thread {
+public class Solver extends Thread {
     static private Pattern inputParser = Pattern.compile("(?<name>[a-zA-Z])\\((?<argument>\\d+)\\)");
     private String function;
     private Map<Character, Function> functions;
     
-    public MyThread(String function, Map<Character, Function> functions){
+    public Solver(String function, Map<Character, Function> functions){
         this.function = function;
         this.functions = functions;
     }

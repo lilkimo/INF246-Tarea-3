@@ -29,7 +29,7 @@ class Problema1 {
         String function = lector.nextLine();
         lector.close();
         
-        MyThread hebra = new MyThread(function, functions);
+        Solver hebra = new Solver(function, functions);
         
         
         /*
