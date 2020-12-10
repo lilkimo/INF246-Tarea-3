@@ -67,7 +67,7 @@ public class Equation {
 
     public static Boolean haveBalancedParenthesis(String equation) {
         Integer openParenthesis = 0;
-        for (Integer i = 0; i < equation.length(); i++) {
+        for (int i = 0; i < equation.length(); i++) {
             if (equation.charAt(i) == '(') {
                 openParenthesis += 1;
             }
@@ -80,6 +80,25 @@ public class Equation {
         if (openParenthesis == 0)
             return true;
         return false;
+    }
+
+    public static String firstBalancedParenthesis(String equation) {
+        Integer openParenthesis = 0;
+        Boolean haveParenthesis = false;
+        for (int i = 0; i < equation.length(); i++) {
+            if (equation.charAt(i) == '(') {
+                haveParenthesis = true;
+                openParenthesis += 1;
+            }
+            else if (equation.charAt(i) == ')') {
+                openParenthesis -= 1;
+                if (openParenthesis < 0)
+                    return null;
+            }
+            if (openParenthesis == 0 && haveParenthesis)
+                return equation.substring(0, i+1);
+        }
+        return null;
     }
 
     public static Boolean haveOperators(String equation) {

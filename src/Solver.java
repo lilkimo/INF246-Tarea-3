@@ -24,4 +24,21 @@ public class Solver extends Thread {
         String nameFunction = matcher.group("name");
         Function actualFunc = functions.get(nameFunction);
     }
+
+    public static void solve(String input, Map<Character, Function> functions) {
+        MutableString solution = new MutableString(input);
+        List<String> toResolve = Function.getFunctions(input);
+
+        Function functionToSolve;
+        String functionEvaluated;
+        String argument;
+        for (String function: toResolve) {
+            System.out.println(function);
+            functionToSolve = functions.get(function.charAt(0));
+            argument = function.substring(2, function.length()-1);
+            functionEvaluated = functionToSolve.equation.replaceAll(functionToSolve.parameter.toString(), argument);
+            solution.replaceAll(function, functionEvaluated, true);
+        }
+        System.out.println(solution);
+    }
 }

@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -18,35 +20,30 @@ class Problema1 {
             if (matcher.find())
                 functions.put(matcher.group("name").charAt(0), new Function(matcher.group("argument").charAt(0), matcher.group("equation").replaceAll("\s+", "")));
             else {
-                throw new Exception("Function \"" + line + "\" cannot be identified");
+                throw new Exception("Function \"" + line + "\" cannot be parsed");
             }
         }
+        /*
         for (Map.Entry<Character, Function> entry : functions.entrySet())
-        System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+            System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+        */
+        Solver.solve("f(1+2+3)+g(4)", functions);
+
+        /*
+        MutableString a = new MutableString("f(x)+4");
+        MutableString b = a;
+        a.replaceAll("f\\(x\\)", "2");
+        System.out.println(a);
+        System.out.println(b);
+        */
         //Lee el input
+        /*
         Scanner lector = new Scanner(System.in);
         System.out.println("Ingrese operacion");
         String function = lector.nextLine();
         lector.close();
         
         Solver hebra = new Solver(function, functions);
-        
-        
-        /*
-        Boolean matchFound = matcher.find();
-        if (matchFound) {
-            System.out.println(matcher.group("name"));
-            System.out.println(matcher.group("argument"));
-            System.out.println(matcher.group("equation"));
-        }
-        else
-            System.out.println("0 matches");
-        */
-        /*
-        Equation equation = new Equation("(4+5*2/2)+(4/5-10*2)/2");
-        System.out.println(equation);
-        System.out.println(equation.solve());
-        System.out.println(equation.solve());
         */
     }
 }
