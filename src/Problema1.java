@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 class Problema1 {
     static private Pattern functionParser = Pattern.compile(" *(?<name>[a-zA-Z])\\((?<argument>[a-zA-Z])\\) *= *(?<equation>(?:[a-zA-z]|\\k<argument>|\\d|\\(|\\)|\\+|\\-|\\*|\\/)(?: |[a-zA-z]|\\k<argument>|\\d|\\(|\\)|\\+|\\-|\\*|\\/)*)");
     static private Map<Character, Function> functions = new HashMap<>();
@@ -23,6 +24,8 @@ class Problema1 {
                 throw new Exception("Function \"" + line + "\" cannot be parsed");
             }
         }
+        /*for (Map.Entry<Character, Function> entry : functions.entrySet())
+        System.out.println(entry.getKey() + ": " + entry.getValue().toString());*/
         //Mostrar el diccionario
         /*
         for (Map.Entry<Character, Function> entry : functions.entrySet())
@@ -46,8 +49,32 @@ class Problema1 {
         /*
         Scanner lector = new Scanner(System.in);
         System.out.println("Ingrese operacion");
-        String function = lector.nextLine();
+        String operation = lector.nextLine();
         lector.close();
+
+        SolverThread hebra = new SolverThread(operation, functions);
+        hebra.start();
+        try {
+            hebra.join();
+            System.out.println(functions);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        /*
+        Boolean matchFound = matcher.find();
+        if (matchFound) {
+            System.out.println(matcher.group("name"));
+            System.out.println(matcher.group("argument"));
+            System.out.println(matcher.group("equation"));
+        }
+        else
+            System.out.println("0 matches");
+        */
+        /*
+        Equation equation = new Equation("(4+5*2/2)+(4/5-10*2)/2");
+        System.out.println(equation);
+        System.out.println(equation.solve());
+        System.out.println(equation.solve());
         
         Solver hebra = new Solver(function, functions);
         */

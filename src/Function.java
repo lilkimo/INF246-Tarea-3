@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -31,9 +32,18 @@ public class Function {
     public Character getparameter() {
         return parameter;
     }
+
+    public void setParameter(Character parameter) {
+        this.parameter = parameter;
+    }
     
     public String getequation() {
         return equation;
     }
+
+    public void setEquation(String equation) {
+        this.equation = equation;
+    }
+
     
 }
