@@ -22,7 +22,11 @@ public class Solver extends Thread {
             System.exit(1);
         }
         String nameFunction = matcher.group("name");
-        Function actualFunc = functions.get(nameFunction);
+        Function actualFunc = functions.get(nameFunction.charAt(0));
+
+        String actualEquation = actualFunc.getequation();
+        
+
     }
 
     public static void solve(String input, Map<Character, Function> functions) {

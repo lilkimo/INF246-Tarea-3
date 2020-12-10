@@ -28,4 +28,12 @@ public class Function {
         }
         return toResolve;
     }
+    public Character getparameter() {
+        return parameter;
+    }
+    
+    public String getequation() {
+        return equation;
+    }
+    
 }
