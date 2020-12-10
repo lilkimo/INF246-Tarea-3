@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 class Problema1 {
     static private Pattern functionParser = Pattern.compile(" *(?<name>[a-zA-Z])\\((?<argument>[a-zA-Z])\\) *= *(?<equation>(?:[a-zA-z]|\\k<argument>|\\d|\\(|\\)|\\+|\\-|\\*|\\/)(?: |[a-zA-z]|\\k<argument>|\\d|\\(|\\)|\\+|\\-|\\*|\\/)*)");
     static private Map<Character, Function> functions = new HashMap<>();
@@ -21,17 +22,22 @@ class Problema1 {
                 throw new Exception("Function \"" + line + "\" cannot be identified");
             }
         }
-        for (Map.Entry<Character, Function> entry : functions.entrySet())
-        System.out.println(entry.getKey() + ": " + entry.getValue().toString());
+        /*for (Map.Entry<Character, Function> entry : functions.entrySet())
+        System.out.println(entry.getKey() + ": " + entry.getValue().toString());*/
         //Lee el input
         Scanner lector = new Scanner(System.in);
         System.out.println("Ingrese operacion");
-        String function = lector.nextLine();
+        String operation = lector.nextLine();
         lector.close();
-        
-        Solver hebra = new Solver(function, functions);
-        
-        
+
+        SolverThread hebra = new SolverThread(operation, functions);
+        hebra.start();
+        try {
+            hebra.join();
+            System.out.println(functions);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
         /*
         Boolean matchFound = matcher.find();
         if (matchFound) {
