@@ -10,3 +10,9 @@ Zarko Kuljis, 201823523-7
 * El cuerpo de una función (Sea f(x)=y, y es el cuerpo) no contendrá funciones anidadas. Ej:
     * f(x) = g(x) + h(x) :heavy_check_mark:
     * f(x) = g(h(x)) :x:
+* Las funciones en input.txt deben manejar sus paréntesis y presentarlos con sentido.
+Ej:
+    * f(x) = (7+2)/3 :heavy_check_mark:
+    * f(x) = (2+5) :x:
+    * f(x) = (5)*7 :x:
+    * f(x) = (2+7)*((8+1)/(3+1)) :heavy_check_mark:
