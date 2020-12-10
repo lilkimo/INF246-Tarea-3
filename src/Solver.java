@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 public class Solver extends Thread {
     static private Pattern inputParser = Pattern.compile("(?<name>[a-zA-Z])\\((?<argument>\\d+)\\)");
+    
     private String function;
     private Map<Character, Function> functions;
     
@@ -13,6 +14,7 @@ public class Solver extends Thread {
         this.function = function;
         this.functions = functions;
     }
+
     public void run(){
         //Cambiarlo a clase InputParser
         Matcher matcher = inputParser.matcher(function);
@@ -37,12 +39,15 @@ public class Solver extends Thread {
         String functionEvaluated;
         String argument;
         for (String function: toResolve) {
-            System.out.println(function);
             functionToSolve = functions.get(function.charAt(0));
             argument = function.substring(2, function.length()-1);
             functionEvaluated = functionToSolve.equation.replaceAll(functionToSolve.parameter.toString(), argument);
-            solution.replaceAll(function, functionEvaluated, true);
+            // Si Functions.getFunctions(functionEvaluated) == [], crea un objeto Equation y aplica Equation.solve.
+            // Si hay más funciones, aplica Solver.solve, lo que debería crear otra hebra por función.
+            System.out.println("Resolver esto con una hebra: " + functionEvaluated);
+            //Una vez se haya resuelto la ecuación (Por Equation.solve), aplica la siguiente línea:
+            //solution.replaceAll(function, functionEvaluated, true);
         }
-        System.out.println(solution);
+        //System.out.println(solution);
     }
 }
