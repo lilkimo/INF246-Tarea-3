@@ -1,6 +1,6 @@
 public class Function {
-    public Character parameter;
-    public String equation;
+    private Character parameter;
+    private String equation;
 
     public Function(Character parameter, String equation) {
         this.parameter = parameter;
@@ -10,4 +10,13 @@ public class Function {
     public String toString() {
         return parameter + ", " + equation;
     }
+
+    public Character getparameter() {
+        return parameter;
+    }
+    
+    public String getequation() {
+        return equation;
+    }
+    
 }
