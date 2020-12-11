@@ -31,8 +31,19 @@ class Problema1 {
         for (Map.Entry<Character, Function> entry : functions.entrySet())
             System.out.println(entry.getKey() + ": " + entry.getValue().toString());
         */
-        
-        Solver.solve("f(1+2+3)+g(4)", functions);
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingrese operacion (-1 para Salir del programa): ");
+        String operation = lector.nextLine();
+
+        while(true){
+            System.out.println(Solver.solve(operation, functions));
+            System.out.println("Ingrese operacion (-1 para Salir del programa): ");
+            operation = lector.nextLine();
+            if (operation.equals("-1")){
+                lector.close();
+                break;
+            }
+        }
         //System.out.println(Function.getFunctions("f(1+2+3)+g(4)"));
         //System.out.println(Function.getFunctions("g(1)*h(1)+1054"));
 

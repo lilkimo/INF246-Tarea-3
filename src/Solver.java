@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import sun.security.ec.point.ProjectivePoint.Mutable;
+
 
 public class Solver extends Thread {
     private MutableString solution;
@@ -15,10 +16,9 @@ public class Solver extends Thread {
         this.input = input;
         this.functions = functions;
     }
-
     public void run() {
         List<String> toResolve = Function.getFunctions(input);
-
+        List<Solver> MyThreads = new ArrayList<Solver>();
         Function functionToSolve;
         String functionEvaluated;
         String argument;
@@ -28,15 +28,24 @@ public class Solver extends Thread {
             functionEvaluated = functionToSolve.equation.replaceAll(functionToSolve.parameter.toString(), argument);
 
             solution.replaceAll(function, '(' + functionEvaluated + ')', true);
-            // Crear una nueva hebra con input = functionEvaluated
+            System.out.println(solution);
+            Solver thread = new Solver(solution, functionEvaluated, functions);
+            thread.start();
+            MyThreads.add(thread);
         }
-        // Esperar a que las hebras creadas terminen.
+        for (Solver mythread : MyThreads){
+            try {
+                mythread.join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static Float solve(String input, Map<Character, Function> functions) {
         MutableString solution = new MutableString(input);
         List<String> toResolve = Function.getFunctions(input);
-
+        List<Solver> MyThreads = new ArrayList<Solver>();
         Function functionToSolve;
         String functionEvaluated;
         String argument;
@@ -46,7 +55,18 @@ public class Solver extends Thread {
             functionEvaluated = functionToSolve.equation.replaceAll(functionToSolve.parameter.toString(), argument);
 
             solution.replaceAll(function, '(' + functionEvaluated + ')', true);
+            System.out.println(solution);
             // Crear una nueva hebra con input = function Evaluated
+            Solver thread = new Solver(solution, functionEvaluated, functions);
+            thread.start();
+            MyThreads.add(thread);
+        }
+        for (Solver mythread : MyThreads){
+            try {
+                mythread.join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         // Esperar a que las hebras creadas terminen.
         try {
