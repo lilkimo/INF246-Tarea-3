@@ -20,6 +20,8 @@ public class Problema2 {
     }
 
     public static void main(String[] args) {
+        System.out.println("\u001b[7m Problema 2 \033[0m");
+        
         Random rd = new Random(); // creating Random object
         Integer[] set = new Integer[10000];
         Integer[] set2 = new Integer[10000];
