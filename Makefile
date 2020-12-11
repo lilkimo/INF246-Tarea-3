@@ -1,5 +1,5 @@
 all:
-	javac -d bin Main.java
-	java -cp bin Main
+	javac -d bin Problema2.java
+	java -cp bin Problema2
 clean:
 	rm bin/*.class

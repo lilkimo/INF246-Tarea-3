@@ -19,7 +19,7 @@ public class Function {
         return parameter + ", " + equation;
     }
 
-    static public List<String> getFunctions(String equation) {
+    public static List<String> getFunctions(String equation) {
         Matcher matcher = functionGetter.matcher(equation);
         Integer start = 0;
         List<String> toResolve = new ArrayList<>();
@@ -29,6 +29,19 @@ public class Function {
         }
         return toResolve;
     }
+
+    public static String evaluate(Function function, String argument) {        
+        String result = Equation.removeParenthesis(function.equation);
+        argument = Equation.removeParenthesis(argument);
+        if (Equation.haveOperators(argument) && Equation.haveOperators(result)) {
+            result = result.replaceAll(Pattern.quote("(" + function.parameter + ")"), '(' + argument + ')');
+            result = result.replaceAll(Pattern.quote(function.parameter.toString()), '(' + argument + ')');
+        }
+        else
+            result = result.replaceAll(Pattern.quote(function.parameter.toString()), argument);
+        return result;
+    }
+
     public Character getparameter() {
         return parameter;
     }
@@ -44,6 +57,4 @@ public class Function {
     public void setEquation(String equation) {
         this.equation = equation;
     }
-
-    
 }

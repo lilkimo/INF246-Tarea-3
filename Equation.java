@@ -13,7 +13,7 @@ public class Equation {
         _precedence.put('-', 1);
         precedence = Collections.unmodifiableMap(_precedence);
     }
-    private static final Set<Character> operators = Set.of('*', '/', '+', '-');
+    private static final Set<Character> operators = Collections.unmodifiableSet(Set.of('*', '/', '+', '-'));
 
     private String[] stringOperands = {null, null};
     private Equation[] operands = {null, null};
@@ -21,11 +21,7 @@ public class Equation {
     private Float value = null;
 
     public Equation(String equation) throws Exception {
-        if (equation.charAt(0) == '(' && equation.charAt(equation.length() - 1) == ')') {
-            String withoutParenthesis = equation.substring(1, equation.length() - 1);
-            if (haveBalancedParenthesis(withoutParenthesis))
-                equation = withoutParenthesis;
-        }
+        equation = removeParenthesis(equation);
         
         Integer openParenthesis = 0;
         String lastValidSlice = new String();
@@ -106,6 +102,17 @@ public class Equation {
             if (operators.contains(equation.charAt(i)))
                 return true;
         return false;
+    }
+
+    public static String removeParenthesis(String equation) {
+        while (equation.charAt(0) == '(' && equation.charAt(equation.length() - 1) == ')') {
+            String withoutParenthesis = equation.substring(1, equation.length() - 1);
+            if (Equation.haveBalancedParenthesis(withoutParenthesis))
+                equation = withoutParenthesis;
+            else
+                break;
+        }
+        return equation;
     }
     
     public void setOperand(String operand, Integer index) throws Exception {

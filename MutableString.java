@@ -34,6 +34,18 @@ public class MutableString {
         }
     }
 
+    public char charAt(int index) {
+        return content.charAt(index);
+    }
+
+    public int length() {
+        return content.length();
+    }
+
+    public String substring(int beginIndex, int endIndex) {
+        return content.substring(beginIndex, endIndex);
+    }
+
     public String toString() {
         return content.toString();
     }
