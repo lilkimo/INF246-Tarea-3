@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 
 class Problema1 {
-    static private Pattern functionParser = Pattern.compile(" *(?<name>[a-zA-Z])\\((?<argument>[a-zA-Z])\\) *= *(?<equation>(?:[a-zA-z]|\\k<argument>|\\d|\\(|\\)|\\+|\\-|\\*|\\/)(?: |[a-zA-z]|\\k<argument>|\\d|\\(|\\)|\\+|\\-|\\*|\\/)*)");
+    static private Pattern functionParser = Pattern.compile(" *(?<name>[a-zA-Z])\\((?<argument>[a-zA-Z])\\) *= *(?<equation>(?:[a-zA-z]|\\k<argument>|\\.|\\d|\\(|\\)|\\+|\\-|\\*|\\/)(?: |[a-zA-z]|\\k<argument>|\\.|\\d|\\(|\\)|\\+|\\-|\\*|\\/)*)");
     static private Map<Character, Function> functions = new HashMap<>();
     public static void main(String args[]) throws Exception {
         functions.clear();
@@ -22,22 +22,16 @@ class Problema1 {
                 throw new Exception("Function \"" + line + "\" cannot be parsed");
             }
         }
-        System.out.println(Solver.solve("f(1)", functions));
-        /*
-        Scanner lector = new Scanner(System.in);
-        System.out.println("Ingrese operacion (-1 para Salir del programa): ");
-        String operation = lector.nextLine();
 
-        while(true){
-            System.out.println(Solver.solve(operation, functions));
-            System.out.println("Ingrese operacion (-1 para Salir del programa): ");
-            operation = lector.nextLine();
-            if (operation.equals("-1")){
+        Scanner lector = new Scanner(System.in);
+        while(true) {
+            System.out.print("Ingrese operacion (ENTER para salir): \n>");
+            String operation = lector.nextLine();
+            if (operation.equals("")){
                 lector.close();
                 break;
             }
+            System.out.println(Solver.solve(operation, functions));
         }
-        */
-        //System.out.println(Function.getFunctions("g(1)*h(1)+1054"));
     }
 }

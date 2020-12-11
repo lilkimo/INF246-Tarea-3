@@ -23,6 +23,7 @@ public class Solver extends Thread {
             solving.add(thread);
 
         }
+
         for (Solver inSolving : solving) {
             try {
                 inSolving.join();
@@ -31,9 +32,8 @@ public class Solver extends Thread {
             }
         }
         
-        Equation result;
         try {
-            result = new Equation(functionEvaluated.toString());
+            Equation result = new Equation(functionEvaluated.toString());
             solution.replaceAll(input, '(' + result.solve().toString() + ')', true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,13 +49,15 @@ public class Solver extends Thread {
             thread.start();
             solving.add(thread);
         }
-        for (Solver mythread : solving){
+
+        for (Solver inSolving: solving){
             try {
-                mythread.join();
+                inSolving.join();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         try {
             Equation result = new Equation(solution.toString());
             return result.solve();

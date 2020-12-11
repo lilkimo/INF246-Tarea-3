@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Function {
-    static public Pattern functionGetter = Pattern.compile("(?<name>[a-zA-Z])\\((?<argument>(?: |[a-zA-z]|\\d|\\(|\\)|\\+|\\-|\\*|\\/)*)\\)");
+    static public Pattern functionGetter = Pattern.compile("(?<name>[a-zA-Z])\\((?<argument>(?: |[a-zA-z]|\\.|\\d|\\(|\\)|\\+|\\-|\\*|\\/)*)\\)");
     
     public Character parameter;
     public String equation;
