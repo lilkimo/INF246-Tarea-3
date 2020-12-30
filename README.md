@@ -2,6 +2,8 @@
 Camilo Gonzalez, 201873550-7
 
 Zarko Kuljis, 201823523-7
+
+Obtuvimos un 90, se nos descontó 10 puntos por no comentar el código.
 # Consideraciones
 * Los decimales se escribirán con punto (.).
 * El nombre de cada función sólo será de 1 caracter alfabético.
